@@ -17,8 +17,7 @@
     MLD @compare_value_pointer, .sort.array
     RST @compare_value
     SUB @base_value
-    CND #signed
-    BRH 0, .swap
+    BRH #signed, .swap
 ; shift compare to base
     AST @compare_value
     RST @base_value
@@ -31,7 +30,6 @@
 .continue:
     INC @compare_value_pointer
     SUB @array_size
-    CND #zero
-    BRH 0, .iteration
+    BRH #zero, .iteration
     INC @base_value_pointer
     JMP 0, .loop

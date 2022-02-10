@@ -3,14 +3,13 @@
 @DECLARE copy 1
 
 ; main
-    CND #!underflow
     IMM 0, 24
 .loop:
     PST 0, 0
 ; iteration
     RST @copy
     RSH 0
-    BRH 0, .loop
+    BRH #!underflow, .loop
 ; 3n+1
     AST @copy
     BSL 1
