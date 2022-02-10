@@ -1,5 +1,4 @@
-@PAGE 0 1
-@ADDRESSABLE sort.bubble
+@PAGE 0 0
 
 @DECLARE base_value 1
 @DECLARE compare_value 2
@@ -7,13 +6,15 @@
 @DECLARE compare_value_pointer 4
 @DECLARE array_size 5
 
+; main
+    IMM @array_size, 16
 .iteration:
     IMM @base_value_pointer, 0
     IMM @compare_value_pointer, 1
 ; initialise base value
     MLD @base_value_pointer, .sort.array
     RST @base_value
-.&loop:
+.loop:
     MLD @compare_value_pointer, .sort.array
     RST @compare_value
     SUB @base_value

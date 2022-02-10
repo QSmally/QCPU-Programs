@@ -1,11 +1,6 @@
-@PAGE 0 0
+@PAGE 0 1
 
-@DECLARE array_size 5
-
-; main
-    IMM @array_size, 16
-    JMP 0, .sort.bubble
-.&sort.array(16):
+.&sort.array:
     0b11000000
     0b01100000
     0b00110000
