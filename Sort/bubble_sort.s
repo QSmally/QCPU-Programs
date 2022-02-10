@@ -1,4 +1,4 @@
-@PAGE 0 0
+@PAGE 0 1
 
 @DECLARE base_value 1
 @DECLARE compare_value 2
