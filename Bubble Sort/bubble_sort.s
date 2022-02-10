@@ -1,4 +1,4 @@
-@PAGE 0 1
+@PAGE 0 0
 
 @DECLARE base_value 1
 @DECLARE compare_value 2
@@ -7,7 +7,7 @@
 @DECLARE array_size 5
 
 ; main
-    IMM @array_size, 16
+    IMM @array_size, 24
 .iteration:
     IMM @base_value_pointer, 0
     IMM @compare_value_pointer, 1
