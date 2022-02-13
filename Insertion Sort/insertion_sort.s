@@ -9,20 +9,17 @@
 @DECLARE array_size 6
 
 ; main
-    IMM @array_size, 23
+    IMM @array_size, 24
     IMM @iteration_pointer, -1
 .iteration:
-    AST @iteration_pointer
+    INC @iteration_pointer
+    RST @compare_pointer
     SUB @array_size
     BRH #zero, .finished
-; increment iteration
-    INC @iteration_pointer
     MLD @iteration_pointer, .sort.array
     RST @current_value
-; enter insertion loop
-    AST @iteration_pointer
-    RST @compare_pointer
-.&insertion_loop:
+.insertion_loop:
+    AST @compare_pointer
     BRH #zero, .iteration
     DEC @compare_pointer
     MLD @compare_pointer, .sort.array
@@ -32,13 +29,11 @@
 ; swap
     AST @current_value
     MST @compare_pointer, .sort.array
-    AST @compare_pointer
-    INC 0
-    RST @swap_pointer
+    INC @compare_pointer
     AST @compare_value
-    MST @swap_pointer, .sort.array
+    MST @compare_pointer, .sort.array
+    DEC @compare_pointer
 ; continue
-    AST @compare_pointer
     JMP 0, .insertion_loop
 .&finished:
     JMP 0, .finished
