@@ -14,7 +14,7 @@
 .finished:
     AST @location
     SUB @begin_location
-    PST 0, 0
+    PPS 7
 
 .spin_lock:
     JMP 0, .spin_lock
