@@ -15,5 +15,6 @@
     AST @location
     SUB @begin_location
     PST 0, 0
+
 .spin_lock:
     JMP 0, .spin_lock

@@ -23,5 +23,8 @@
     RST @output
     JMP 0, .loop
 .finished:
-    ; see @output for the result
-    JMP 0, .finished
+    AST @output
+    PST 0, 0
+
+.spin_lock:
+    JMP 0, .spin_lock
