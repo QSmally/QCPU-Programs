@@ -5,7 +5,7 @@
 ; main
     IMM 0, 24
 .loop:
-    PST 0, 0
+    PPS 7
 ; iteration
     RST @copy
     RSH 0

@@ -6,7 +6,7 @@
     IMM @operand, 1
     IMM 0, 0
 .loop:
-    PST 0, 0
+    PPS 7
 ; iteration
     ADD @operand
     XCH @operand
