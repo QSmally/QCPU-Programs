@@ -7,7 +7,7 @@
     IMM @location, .strlen.array
     RST @begin_location
 .loop:
-    MLD @location, .strlen.array
+    MLD @location, 0
     BRH #zero, .finished
     INC @location
     JMP 0, .loop
