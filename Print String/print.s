@@ -2,6 +2,8 @@
 
 .main:
     @ITERATOR print.array print.closure
+.spin_lock:
+    JMP 0, .spin_lock
 
 .print.array:
     $Hello world

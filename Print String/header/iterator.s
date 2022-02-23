@@ -11,5 +11,6 @@
     MLD @location, 0
     BRH #zero, .finished
     CAL 0, .@subroutine_label
+    INC @location
     JMP 0, .loop
 .finished:
