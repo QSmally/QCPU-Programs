@@ -3,6 +3,10 @@
 @DECLARE begin_location 1
 @DECLARE location 2
 
+@IF enable-prefetch
+    PRF .strlen.array-
+@END
+
 ; main
     IMM @location, .strlen.array
     RST @begin_location

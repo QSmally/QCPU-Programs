@@ -7,6 +7,10 @@
 
 See the [QCPU CLI](https://github.com/QSmally/QCPU-CLI) for building and emulating these programs. For the QOS application, it can be found at the [`QSmally/QOS`](https://github.com/QSmally/QOS) repository.
 
+**Assemble flags**
+
+* `--enable-prefetch` - for some programs, adds a prefetch instruction ahead of execution.
+
 ## Possible future programs
 
 * Software hashing algorithm;
