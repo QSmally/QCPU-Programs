@@ -3,10 +3,9 @@
 
 @DECLARE iteration_pointer 1
 @DECLARE compare_pointer 2
-@DECLARE swap_pointer 3
-@DECLARE current_value 4
-@DECLARE compare_value 5
-@DECLARE array_size 6
+@DECLARE current_value 3
+@DECLARE compare_value 4
+@DECLARE array_size 5
 
 ; main
     IMM @array_size, 24
