@@ -10,7 +10,7 @@
 .loop:
     MLD @location, 0
     BRH #zero, .finished
-    CAL 0, .@subroutine_label
+    CAL zero, .@subroutine_label
     INC @location
-    JMP 0, .loop
+    JMP zero, .loop
 .finished:

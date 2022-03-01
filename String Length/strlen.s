@@ -14,11 +14,11 @@
     MLD @location, 0
     BRH #zero, .finished
     INC @location
-    JMP 0, .loop
+    JMP zero, .loop
 .finished:
     AST @location
     SUB @begin_location
-    PPS 0
+    PPS accumulator
 
 .spin_lock:
-    JMP 0, .spin_lock
+    JMP zero, .spin_lock

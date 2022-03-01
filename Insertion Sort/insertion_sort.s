@@ -33,6 +33,6 @@
     MST @compare_pointer, .sort.array
     DEC @compare_pointer
 ; continue
-    JMP 0, .insertion_loop
+    JMP zero, .insertion_loop
 .&finished:
-    JMP 0, .finished
+    JMP zero, .finished

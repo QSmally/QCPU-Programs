@@ -22,7 +22,7 @@
 ; shift compare to base
     AST @compare_value
     RST @base_value
-    JMP 0, .continue
+    JMP zero, .continue
 .swap:
     AST @base_value
     MST @compare_value_pointer, .sort.array
@@ -33,4 +33,4 @@
     SUB @array_size
     BRH #zero, .iteration
     INC @base_value_pointer
-    JMP 0, .loop
+    JMP zero, .loop

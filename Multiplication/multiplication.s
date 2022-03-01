@@ -21,9 +21,9 @@
     BPL @incrementer
     ADD @output
     RST @output
-    JMP 0, .loop
+    JMP zero, .loop
 .finished:
     PPS @output
 
 .spin_lock:
-    JMP 0, .spin_lock
+    JMP zero, .spin_lock

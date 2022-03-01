@@ -4,10 +4,10 @@
 
 ; main
     IMM @operand, 1
-    IMM 0, 0
+    IMM accumulator, 0
 .loop:
-    PPS 0
+    PPS accumulator
 ; iteration
     ADD @operand
     XCH @operand
-    JMP 0, .loop
+    JMP zero, .loop
