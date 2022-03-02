@@ -1,6 +1,6 @@
 @PAGE 0 0
 
-.main:
+; main
     @ITERATOR print.array print.closure
     JMP zero, .finished
 
