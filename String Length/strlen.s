@@ -19,6 +19,3 @@
     AST @location
     SUB @begin_location
     PPS accumulator
-
-.spin_lock:
-    JMP zero, .spin_lock

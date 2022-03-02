@@ -2,8 +2,7 @@
 
 .main:
     @ITERATOR print.array print.closure
-.spin_lock:
-    JMP zero, .spin_lock
+    JMP zero, .finished
 
 .print.array:
     $Hello world
@@ -12,3 +11,4 @@
 .print.closure:
     PPS accumulator
     @RETURN
+.finished:

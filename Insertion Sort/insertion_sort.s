@@ -35,4 +35,3 @@
 ; continue
     JMP zero, .insertion_loop
 .&finished:
-    JMP zero, .finished

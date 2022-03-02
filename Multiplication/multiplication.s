@@ -24,6 +24,3 @@
     JMP zero, .loop
 .finished:
     PPS @output
-
-.spin_lock:
-    JMP zero, .spin_lock
