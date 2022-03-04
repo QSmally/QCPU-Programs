@@ -10,9 +10,11 @@
 ; main
     IMM @source_location, .strcpy.array
     IMM @copy_location, .strcpy.copied_array
+    JMP zero, .first_iteration_loop
 .loop:
-    MLD @source_location, 0
-    MST @copy_location, 0
     INC @source_location
     INC @copy_location
+.first_iteration_loop:
+    MLD @source_location, 0
+    MST @copy_location, 0
     BRH #!zero, .loop
