@@ -9,9 +9,10 @@
 
 ; main
     IMM @location, .strchr.array
-    IMM @character, $o
+    IMM @character, $t
 .loop:
     MLD @location, 0
+    BRH #zero, .finished
     SUB @character
     BRH #zero, .finished
     INC @location
