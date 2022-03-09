@@ -14,6 +14,7 @@ See the [QCPU CLI](https://github.com/QSmally/QCPU-CLI) for building and emulati
 ## Possible future programs
 
 * Software hashing algorithm;
+* Asymmetic encryption algorithm;
 * Pseudo-randomiser algortihm;
 * Binary search algorithm;
 * Mandelbrot render.
