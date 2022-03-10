@@ -9,13 +9,14 @@
 
 ; main
     IMM @location, .strchr.array
-    IMM @character, $t
+    IMM @character, $w
 .loop:
     MLD @location, 0
-    BRH #zero, .finished
+    BRH #zero, .exit
     SUB @character
     BRH #zero, .finished
     INC @location
     JMP zero, .loop
 .finished:
     PPS @location
+.exit:
