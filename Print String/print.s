@@ -1,14 +1,21 @@
 @PAGE 0 0
 
-; main
-    @ITERATOR print.array print.closure
-    JMP zero, .finished
+@DECLARE location 1
 
-.print.array:
+; main
+    IMM @location, .array
+.loop:
+    MLD @location, 0
+    BRH #zero, .finished
+    CAL zero, .closure
+    INC @location
+    JMP zero, .loop
+
+.array:
     $Hello world
     0x00
 
-.print.closure:
+.closure:
     PPS accumulator
     @RETURN
 .finished:
