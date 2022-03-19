@@ -4,4 +4,4 @@
     $Hello world
     0x00
 
-.&strcpy.copied_array:
+.&strcpy.array_copy:

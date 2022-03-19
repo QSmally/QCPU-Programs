@@ -9,7 +9,7 @@
 
 ; main
     IMM @source_location, .strcpy.array
-    IMM @copy_location, .strcpy.copied_array
+    IMM @copy_location, .strcpy.array_copy
     JMP zero, .first_iteration_loop
 .loop:
     INC @source_location
