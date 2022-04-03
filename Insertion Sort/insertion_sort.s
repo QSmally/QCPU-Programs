@@ -17,21 +17,21 @@
     BRH #zero, .finished
     MLD @iteration_pointer, .sort.array
     RST @current_value
-.insertion_loop:
-    AST @compare_pointer
-    BRH #zero, .iteration
-    DEC @compare_pointer
-    MLD @compare_pointer, .sort.array
-    RST @compare_value
-    SUB @current_value
-    BRH #signed, .iteration
-; swap
-    AST @current_value
-    MST @compare_pointer, .sort.array
-    INC @compare_pointer
-    AST @compare_value
-    MST @compare_pointer, .sort.array
-    DEC @compare_pointer
-; continue
-    JMP zero, .insertion_loop
+    .insertion_loop:
+        AST @compare_pointer
+        BRH #zero, .iteration
+        DEC @compare_pointer
+        MLD @compare_pointer, .sort.array
+        RST @compare_value
+        SUB @current_value
+        BRH #signed, .iteration
+    ; swap
+        AST @current_value
+        MST @compare_pointer, .sort.array
+        INC @compare_pointer
+        AST @compare_value
+        MST @compare_pointer, .sort.array
+        DEC @compare_pointer
+    ; continue
+        JMP zero, .insertion_loop
 .&finished:

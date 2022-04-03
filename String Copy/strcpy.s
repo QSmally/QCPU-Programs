@@ -14,7 +14,7 @@
 .loop:
     INC @source_location
     INC @copy_location
-.first_iteration_loop:
-    MLD @source_location, 0
-    MST @copy_location, 0
-    BRH #!zero, .loop
+    .first_iteration_loop:
+        MLD @source_location, 0
+        MST @copy_location, 0
+        BRH #!zero, .loop

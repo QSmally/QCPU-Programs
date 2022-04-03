@@ -14,23 +14,23 @@
 ; initialise base value
     MLD @base_value_pointer, .sort.array
     RST @base_value
-.loop:
-    MLD @compare_value_pointer, .sort.array
-    RST @compare_value
-    SUB @base_value
-    BRH #signed, .swap
-; shift compare to base
-    AST @compare_value
-    RST @base_value
-    JMP zero, .continue
-.swap:
-    AST @base_value
-    MST @compare_value_pointer, .sort.array
-    AST @compare_value
-    MST @base_value_pointer, .sort.array
-.continue:
-    INC @compare_value_pointer
-    SUB @array_size
-    BRH #zero, .iteration
-    INC @base_value_pointer
-    JMP zero, .loop
+    .loop:
+        MLD @compare_value_pointer, .sort.array
+        RST @compare_value
+        SUB @base_value
+        BRH #signed, .swap
+    ; shift compare to base
+        AST @compare_value
+        RST @base_value
+        JMP zero, .continue
+    .swap:
+        AST @base_value
+        MST @compare_value_pointer, .sort.array
+        AST @compare_value
+        MST @base_value_pointer, .sort.array
+    .continue:
+        INC @compare_value_pointer
+        SUB @array_size
+        BRH #zero, .iteration
+        INC @base_value_pointer
+        JMP zero, .loop
