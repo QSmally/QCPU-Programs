@@ -6,8 +6,8 @@
 @DECLARE output 4
 
 ; main
-    IMM @input_a, 5
-    IMM @input_b, 3
+    IMM @input_a, 24
+    IMM @input_b, 10
     IMM @incrementer, -1
     IMM @output, 0
 .loop:
