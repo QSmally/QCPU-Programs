@@ -11,11 +11,9 @@
     IMM @location, .strlen.array
     RST @begin_location
 .loop:
-    MLD @location, 0
-    BRH #zero, .finished
-    INC @location
-    JMP zero, .loop
-.finished:
-    AST @location
+    MLI @location, 0
+    BRH #!zero, .loop
+; finished
+    DEC @location
     SUB @begin_location
     PPS accumulator

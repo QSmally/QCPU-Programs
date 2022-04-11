@@ -5,10 +5,9 @@
 ; main
     IMM @location, .array
 .loop:
-    MLD @location, 0
+    MLI @location, 0
     BRH #zero, .finished
     CAL zero, .closure
-    INC @location
     JMP zero, .loop
 
 .array:
