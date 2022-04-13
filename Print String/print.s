@@ -6,15 +6,13 @@
     IMM @location, .array
 .loop:
     MLI @location, 0
-    BRH #zero, .finished
-    CAL zero, .closure
-    JMP zero, .loop
+    BRH #!zero, .closure
 
-.array:
+; ensure there's an empty instruction to halt
+.array(7):
     $Hello world
     0x00
 
 .closure:
     PPS accumulator
-    @RETURN
-.finished:
+    JMP zero, .loop
