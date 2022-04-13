@@ -9,11 +9,9 @@
 
 ; main
     IMM @source_location, .strcpy.array
-    IMM @copy_location, .strcpy.array_copy
-    JMP zero, .first_iteration_loop
+    IMM @copy_location, .strcpy.array_copy -1
 .loop:
     INC @copy_location
-.first_iteration_loop:
     MLI @source_location, 0
     MST @copy_location, 0
     BRH #!zero, .loop
