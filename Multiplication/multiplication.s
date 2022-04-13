@@ -11,9 +11,9 @@
     IMM @incrementer, -1
     IMM @output, 0
 .loop:
-    INC @incrementer
     AST @input_a
     BRH #zero, .finished
+    INC @incrementer
     RSH @input_a
     BRH #!underflow, .loop
 ; shift and add
