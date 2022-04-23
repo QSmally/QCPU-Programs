@@ -15,7 +15,7 @@
     BRH #zero, .exit
     SUB @character
     BRH #!zero, .loop
-; add char
+; push char location
     AST @location
     DEC accumulator
     PPS accumulator
