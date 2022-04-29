@@ -2,17 +2,21 @@
 
 @DECLARE location 1
 
-; main
-    IMM @location, .array
-.loop:
-    MLI @location, 0
-    BRH #!zero, .closure
+// TODO: add 'empty' instruction to halt whilst in the middle of code.
 
-; ensure there's an empty instruction to halt
-.array(7):
+; main
+    JMP zero, .start_loop
+
+.array:
     $Hello world
     0x00
 
 .closure:
     PPS accumulator
     JMP zero, .loop
+
+.start_loop:
+    IMM @location, .array
+.loop:
+    MLI @location, 0
+    BRH #!zero, .closure
