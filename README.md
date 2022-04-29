@@ -17,7 +17,7 @@ See the [QCPU CLI](https://github.com/QSmally/QCPU-CLI) for building and emulati
 * Asymmetic encryption algorithm;
 * Pseudo-randomiser algortihm;
 * Binary search algorithm;
-* Mandelbrot render.
+* Mandelbrot render algorithm.
 
 **Rewrite from QCPU 1**
 
