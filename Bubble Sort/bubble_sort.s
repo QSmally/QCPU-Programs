@@ -7,7 +7,7 @@
 @DECLARE array_size 5
 
 ; main
-    IMM @array_size, 24
+    IMM @array_size, .sort.array_size
 .iteration:
     IMM @base_value_pointer, 0
     IMM @compare_value_pointer, 1
