@@ -9,7 +9,7 @@
 
 ; main
     IMM @source_location, .strcpy.array
-    IMM @copy_location, .strcpy.array_copy -1
+    IMM @copy_location, .strcpy.array_copy - 1
 .loop:
     INC @copy_location
     MLI @source_location, 0
