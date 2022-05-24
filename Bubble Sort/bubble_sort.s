@@ -6,8 +6,10 @@
 @DECLARE compare_value_pointer 4
 @DECLARE array_size 5
 
+@DECLARE offset -0b00100000
+
 ; main
-    IMM @array_size, .sort.array_size
+    IMM @array_size, .sort.array_size @offset
 .iteration:
     IMM @base_value_pointer, 0
     IMM @compare_value_pointer, 1

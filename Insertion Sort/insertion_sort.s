@@ -7,8 +7,12 @@
 @DECLARE compare_value 4
 @DECLARE array_size 5
 
+// TODO:
+// Add left/right-hand operators such as 'and' instead of only addition.
+@DECLARE offset -0b01000000
+
 ; main
-    IMM @array_size, .sort.array_size
+    IMM @array_size, .sort.array_size @offset
     IMM @iteration_pointer, -1
 .iteration:
     INC @iteration_pointer
