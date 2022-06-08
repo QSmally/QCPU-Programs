@@ -2,6 +2,8 @@
 
 @DECLARE location 1
 
+@DECLARE var_append_char $d
+
 ; main
     IMM @location, .strpsh.array
 .loop:
@@ -9,7 +11,7 @@
     BRH #!zero, .loop
 ; append char
     DEC @location
-    IMM accumulator, $d
+    IMM accumulator, @var_append_char
     MST @location, 0
 ; insert 0x00
     INC @location

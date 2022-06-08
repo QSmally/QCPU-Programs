@@ -2,8 +2,10 @@
 
 @DECLARE copy 1
 
+@DECLARE var_start_uint 24
+
 ; main
-    IMM accumulator, 24
+    IMM accumulator, @var_start_uint
 .loop:
     PPS accumulator
 ; iteration

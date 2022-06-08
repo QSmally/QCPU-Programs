@@ -5,9 +5,12 @@
 @DECLARE incrementer 3
 @DECLARE output 4
 
+@DECLARE var_a_uint 24
+@DECLARE var_b_uint 10
+
 ; main
-    IMM @input_a, 24
-    IMM @input_b, 10
+    IMM @input_a, @var_a_uint
+    IMM @input_b, @var_b_uint
     IMM @incrementer, -1
     IMM @output, 0
 .loop:
