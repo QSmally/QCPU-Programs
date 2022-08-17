@@ -14,12 +14,12 @@
     MLI @pointer, .signature.target_buffer
     RST @byte
     .bit_iteration:
-        AST @byte
         BRH #zero, .iteration_done
         RSH @byte
         BRH #!underflow, .bit_iteration
     ; increment signature
         INC @signature
+        AST @byte
         JMP zero, .bit_iteration
 .iteration_done:
     AST @pointer
