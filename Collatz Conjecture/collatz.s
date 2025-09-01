@@ -1,20 +1,30 @@
-@PAGE 0 0
 
-@DECLARE copy 1
+// qcpu --virtualise --listen 7 Collatz\ Conjecture/collatz.s
 
-@DECLARE var_start_uint 24
+@section root
+@region 256
+@align 2
 
-; main
-    IMM accumulator, @var_start_uint
-.loop:
-    PPS accumulator
-; iteration
-    RST @copy
-    RSH accumulator
-    BRH #!underflow, .loop
-; 3n+1
-    AST @copy
-    BSL 1
-    ADD @copy
-    INC accumulator
-    JMP zero, .loop
+_:                u16 .start
+
+@end
+
+@linkinfo(origin) root, 0
+@linkinfo(align) text, 256
+
+; @define integer, 24
+@define integer, 175
+
+@section text
+.start:           imm zr, @integer
+.loop:            rst rz
+                  rst ra
+                  rsh zr            ; division by 2
+                  brh z, .end
+                  brh nu, .loop
+                  ast ra            ; 3n+1
+                  bsl 1
+                  add ra
+                  inc zr
+                  jmpr .loop
+.end:             bkpt
