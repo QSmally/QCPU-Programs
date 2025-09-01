@@ -1,25 +1,32 @@
 
 # QCPU Programs
 
-> A library with simple-to-complex programs running on QCPU 2 assembly.
+QCPU assembly of simple-to-complex programs
 
-## Build
+## Virtualisation
 
-See the [QCPU CLI](https://github.com/QSmally/QCPU-CLI) for building and emulating these programs. For the QOS application, it can be found at the [`QSmally/QOS`](https://github.com/QSmally/QOS) repository.
+Refer to [QCPU CLI](https://github.com/QSmally/QCPU-CLI) for virtualising these programs. For QOS,
+it can be found at the [`QSmally/QOS`](https://github.com/QSmally/QOS) repository.
 
-**Assemble flags**
+The command that needs to be ran is put at the top of the entrypoint file. Generally, it looks like
+one of the following:
 
-* `--enable-prefetch` - for some programs, adds a prefetch instruction ahead of execution.
+```bash
+$ qcpu --virtualise --step path/to/entrypoint.s
+$ qcpu --virtualise --listen 7 path/to/entrypoint.s # --listen 7 outputs writes of rz (gpr 7)
+```
 
-## Possible future programs
+## Future programs
 
-* Software hashing algorithm;
-* Asymmetic encryption algorithm;
-* Pseudo-randomiser algortihm;
-* Binary search algorithm;
-* Mandelbrot render algorithm.
+Possibly
 
-**Rewrite from QCPU 1**
+* Software hashing algorithm
+* Asymmetic encryption algorithm
+* Pseudo-randomiser algortihm
+* Binary search algorithm
+* Mandelbrot render algorithm
 
-* Pong (1 & 2 players);
-* Snake.
+**Rewrite from QCPU 1**:
+
+* Pong (1 & 2 players)
+* Snake

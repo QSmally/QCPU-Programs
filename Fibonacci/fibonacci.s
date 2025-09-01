@@ -1,13 +1,26 @@
-@PAGE 0 0
 
-@DECLARE operand 1
+// qcpu --virtualise --listen 7 Fibonacci/fibonacci.s
 
-; main
-    IMM @operand, 1
-    IMM accumulator, 0
-.loop:
-    PPS accumulator
-; iteration
-    ADD @operand
-    XCH @operand
-    JMP zero, .loop
+@header output
+                  rst rz
+@end
+
+@section root
+@region 256
+@align 2
+
+_:                u16 .start
+
+@end
+
+@linkinfo(origin) root, 0
+@linkinfo(align) text, 256
+
+@section text
+.start:           imm ra, 1
+                  clr
+.loop:            @output
+                  xch ra
+                  add ra
+                  brh nc, .loop
+                  bkpt
