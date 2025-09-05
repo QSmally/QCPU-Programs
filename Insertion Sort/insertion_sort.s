@@ -1,37 +1,50 @@
-@PAGE 0 0
-@OVERFLOWABLE
 
-@DECLARE iteration_pointer 1
-@DECLARE compare_pointer 2
-@DECLARE current_value 3
-@DECLARE compare_value 4
-@DECLARE array_size 5
+// qcpu --virtualise --memory 256 --maxcycles 8192 Insertion\ Sort/insertion_sort.s
 
-; main
-    IMM @array_size, .sort.array_size & 0x1F
-    IMM @iteration_pointer, -1
-.iteration:
-    INC @iteration_pointer
-    RST @compare_pointer
-    SUB @array_size
-    BRH #zero, .finished
-    MLD @iteration_pointer, .sort.array
-    RST @current_value
-    .insertion_loop:
-        AST @compare_pointer
-        BRH #zero, .iteration
-        DEC @compare_pointer
-        MLD @compare_pointer, .sort.array
-        RST @compare_value
-        SUB @current_value
-        BRH #signed, .iteration
-    ; swap
-        AST @current_value
-        MST @compare_pointer, .sort.array
-        INC @compare_pointer
-        AST @compare_value
-        MST @compare_pointer, .sort.array
-        DEC @compare_pointer
-    ; continue
-        JMP zero, .insertion_loop
-.&finished:
+@import array, "array.s"
+
+@section root
+@region 256
+@align 2
+
+_:                u16 .start
+
+@end
+
+@linkinfo(origin) root, 0
+@linkinfo(align) data, 256
+@linkinfo(align) text, 256
+
+@define iteration_ptr, ra
+@define compare_ptr, rb
+@define current_val, rc
+@define compare_val, rd
+@define array_len, rx
+
+@section text
+.start:           imm @array_len, @array.len
+                  imm @iteration_ptr, -1
+.loop:            inc @iteration_ptr
+                  rst @compare_ptr
+                  sub @array_len
+                  brh z, .end
+                  ast @iteration_ptr
+                  mld' zr, .array.origin
+                  rst @current_val
+.inner_loop:      ast @compare_ptr
+                  brh z, .loop
+                  dec @compare_ptr
+                  mld' zr, .array.origin
+                  rst @compare_val
+                  sub @current_val
+                  brh s, .loop
+                  ast @current_val  ; swap
+                  ast @compare_ptr
+                  mst' zr, .array.origin
+                  inc @compare_ptr
+                  ast @compare_val
+                  ast @compare_ptr
+                  mst' zr, .array.origin
+                  dec @compare_ptr
+                  jmpr .inner_loop
+.end:             bkpt
