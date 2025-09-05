@@ -1,5 +1,5 @@
 
-// qcpu --virtualise --listen 7 Collatz\ Conjecture/collatz.s
+// qcpu --virtualise --listen 1 Collatz\ Conjecture/collatz.s
 
 @section root
 @region 256
@@ -12,13 +12,11 @@ _:                u16 .start
 @linkinfo(origin) root, 0
 @linkinfo(align) text, 256
 
-; @define integer, 24
 @define integer, 175
 
 @section text
 .start:           imm zr, @integer
-.loop:            rst rz
-                  rst ra
+.loop:            rst ra
                   rsh zr            ; division by 2
                   brh z, .end
                   brh nu, .loop

@@ -1,19 +1,23 @@
-@PAGE 0 0
 
-@DECLARE begin_location 1
-@DECLARE location 2
+// qcpu --virtualise --listen 1 String\ Length/strlen.s
 
-@IF enable-prefetch
-    PRF .strlen.array-
-@END
+@import array, "array.s"
 
-; main
-    IMM @location, .strlen.array
-    RST @begin_location
-.loop:
-    MLI @location, 0
-    BRH #!zero, .loop
-; finished
-    DEC @location
-    SUB @begin_location
-    PPS accumulator
+@section root
+@region 256
+@align 2
+
+_:                u16 .start
+
+@end
+
+@linkinfo(origin) root, 0
+@linkinfo(align) data, 256
+@linkinfo(align) text, 256
+
+@section text
+.start:           imm ra, -1
+.loop:            inc ra
+                  mld' zr, .array.origin
+                  brh nz, .loop
+                  bkpt
