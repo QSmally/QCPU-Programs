@@ -1,25 +1,35 @@
-@PAGE 0 0
 
-@DECLARE location 1
-@DECLARE character 2
+// qcpu --virtualise --listen 7 String\ Occurrences/strocc.s
 
-@DECLARE var_search_char $l
+@import array, "array.s"
 
-@IF enable-prefetch
-    PRF .strocc.array-
-@END
+@header output
+                  rst rz
+@end
 
-; main
-    IMM @location, .strocc.array
-    IMM @character, @var_search_char
-.loop:
-    MLI @location, 0
-    BRH #zero, .exit
-    SUB @character
-    BRH #!zero, .loop
-; push char location
-    AST @location
-    DEC accumulator
-    PPS accumulator
-    JMP zero, .loop
-.exit:
+@section root
+@region 256
+@align 2
+
+_:                u16 .start
+
+@end
+
+@linkinfo(origin) root, 0
+@linkinfo(align) data, 256
+@linkinfo(align) text, 256
+
+@define var_search_char, 'l'
+
+@section text
+.start:           imm ra, -1
+                  imm rb, @var_search_char
+.loop:            inc ra
+                  mld' zr, .array.origin
+                  brh z, .end
+                  sub rb
+                  brh nz, .loop
+                  ast ra            ; output
+                  @output
+                  jmpr .loop
+.end:             bkpt
