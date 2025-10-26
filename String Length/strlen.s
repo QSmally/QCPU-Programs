@@ -1,23 +1,21 @@
 
-// qcpu --virtualise --listen 1 String\ Length/strlen.s
+// qcpu --virtualise --listen x3 String\ Length/strlen.s
 
 @import array, "array.s"
 
+@linkinfo(origin) root, 0x0800
+@linkinfo(align) data, 256
+
 @section root
-@region 256
 @align 2
 
-_:                u16 .start
+_:                lui x1, .array.origin         ; original addr
+                  mov x2, x1                    ; moving addr - 1
+                  dec x2
 
-@end
+.loop:            inc x2
+                  mld x3, x2, 0
+                  brh nz, .loop                 ; loop if not null
 
-@linkinfo(origin) root, 0
-@linkinfo(align) data, 256
-@linkinfo(align) text, 256
-
-@section text
-.start:           imm ra, -1
-.loop:            inc ra
-                  mld' zr, .array.origin
-                  brh nz, .loop
+                  sub x3, x1, x2
                   bkpt

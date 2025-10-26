@@ -1,28 +1,34 @@
 
-// qcpu --virtualise --listen 1 Collatz\ Conjecture/collatz.s
+// qcpu --virtualise --listen x1 Collatz\ Conjecture/collatz.s
 
-@section root
-@region 256
-@align 2
+@linkinfo(origin) root, 0x0800
 
-_:                u16 .start
-
+@header ubc
+      @if !@release
+                  brh c, .trap
+      @end
 @end
 
-@linkinfo(origin) root, 0
-@linkinfo(align) text, 256
+@buildinfo release, 0
+@buildinfo integer, 24
 
-@define integer, 175
+@section root
+@align 2
 
-@section text
-.start:           imm zr, @integer
-.loop:            rst ra
-                  rsh zr            ; division by 2
-                  brh z, .end
-                  brh nu, .loop
-                  ast ra            ; 3n+1
-                  bsl 1
-                  add ra
-                  inc zr
+_:                lui x2, @integer
+                  ioriu x2, @integer & 0xFF
+
+.loop:            mov x1, x2
+                  bsr x2, x1, 1                 ; division by 2
+                  brh z, .end                   ; n >> 1 == 0? we're done
+                  brh nc, .loop                 ; n & 1 == 0? even, loop again
+                  bsl x2, x1, 1                 ; 3n+1
+                  @ubc
+                  add x2, x2, x1
+                  @ubc
+                  inc x2, x2
+                  @ubc
                   jmpr .loop
+
 .end:             bkpt
+.trap:            bkpt
